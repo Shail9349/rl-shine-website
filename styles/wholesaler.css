@@ -1,0 +1,461 @@
+/* Wholesaler Page Styles */
+.wholesaler-hero {
+    background: linear-gradient(135deg, #553c9a, #805ad5);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.wholesaler-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wholesaler-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.wholesaler-hero p {
+    font-size: 1.3rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.wholesaler-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.wholesaler-cta .btn-primary {
+    background: white;
+    color: #805ad5;
+    font-weight: 600;
+}
+
+.wholesaler-cta .btn-secondary {
+    color: white;
+    border-color: white;
+}
+
+.wholesaler-cta .btn-secondary:hover {
+    background: white;
+    color: #805ad5;
+}
+
+/* Wholesale Benefits */
+.wholesale-benefits {
+    padding: 80px 0;
+    background-color: #faf5ff;
+}
+
+.benefits-container {
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(128, 90, 213, 0.1);
+    transition: transform 0.3s;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(128, 90, 213, 0.15);
+}
+
+.benefit-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #805ad5;
+    opacity: 0.3;
+    min-width: 60px;
+}
+
+.benefit-content h3 {
+    font-size: 1.4rem;
+    color: #1a202c;
+    margin-bottom: 10px;
+}
+
+.benefit-content p {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* Requirements Section */
+.wholesale-requirements {
+    padding: 80px 0;
+    background: white;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.requirement-card {
+    text-align: center;
+    padding: 40px 30px;
+    background: #faf5ff;
+    border-radius: 10px;
+    border-top: 4px solid #805ad5;
+    transition: transform 0.3s;
+}
+
+.requirement-card:hover {
+    transform: translateY(-10px);
+}
+
+.requirement-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #805ad5;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(128, 90, 213, 0.1);
+}
+
+.requirement-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #1a202c;
+}
+
+.requirement-card p {
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* Pricing Tiers */
+.pricing-tiers {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #faf5ff, #e9d8fd);
+}
+
+.tiers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.tier-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(128, 90, 213, 0.1);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.tier-card:hover {
+    transform: translateY(-10px);
+}
+
+.tier-card.featured {
+    border: 3px solid #805ad5;
+    transform: scale(1.05);
+}
+
+.tier-card.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: #805ad5;
+    color: white;
+    padding: 8px 40px;
+    transform: rotate(45deg);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.tier-header {
+    background: #805ad5;
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.tier-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.tier-price {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.tier-volume {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.tier-features {
+    list-style: none;
+    padding: 40px 30px;
+}
+
+.tier-features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tier-features i {
+    color: #805ad5;
+}
+
+.tier-features i.fa-times {
+    color: #e53e3e;
+}
+
+.tier-select {
+    width: calc(100% - 60px);
+    margin: 0 30px 30px;
+    padding: 15px;
+    background: #805ad5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.tier-select:hover {
+    background: #6b46c1;
+}
+
+.featured-btn {
+    background: #553c9a;
+}
+
+.featured-btn:hover {
+    background: #44337a;
+}
+
+/* Wholesaler Form */
+.wholesaler-form-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.form-intro h2 {
+    font-size: 2.5rem;
+    color: #1a202c;
+    margin-bottom: 20px;
+}
+
+.form-intro p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.application-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: #805ad5;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin: 0 auto 10px;
+}
+
+.step p {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin: 0;
+}
+
+/* Form Styles */
+.wholesaler-form {
+    background: #f7fafc;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.wholesaler-form h3 {
+    font-size: 1.3rem;
+    color: #1a202c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #805ad5;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #805ad5;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form-actions .btn-primary {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    background: #805ad5;
+}
+
+.form-disclaimer {
+    margin-top: 15px;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.form-disclaimer a {
+    color: #805ad5;
+    text-decoration: none;
+}
+
+.form-disclaimer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .form-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .tier-card.featured {
+        transform: scale(1);
+    }
+    
+    .tier-card.featured:hover {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .wholesaler-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .wholesaler-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .benefit-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .application-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .wholesaler-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .wholesaler-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tiers-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .wholesaler-form {
+        padding: 25px 20px;
+    }
+    
+    .featured-badge {
+        font-size: 0.8rem;
+        padding: 6px 30px;
+        right: -25px;
+    }
+}

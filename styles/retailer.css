@@ -1,0 +1,452 @@
+/* Retailer Page Styles */
+.retailer-header {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+    padding: 80px 0;
+}
+
+.retailer-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.retailer-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.retailer-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.retailer-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.stat p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Benefits Section */
+.retailer-benefits {
+    padding: 80px 0;
+    background-color: #fffaf0;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.benefit-card {
+    background: white;
+    border-radius: 10px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(237, 137, 54, 0.1);
+    transition: transform 0.3s;
+    border-top: 4px solid #ed8936;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(237, 137, 54, 0.15);
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    background: #fffaf0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #ed8936;
+    font-size: 1.8rem;
+}
+
+.benefit-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #1a202c;
+}
+
+/* Minimum Order Section */
+.minimum-order {
+    padding: 80px 0;
+    background: white;
+}
+
+.order-requirement {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.order-content h2 {
+    font-size: 2.5rem;
+    color: #1a202c;
+    margin-bottom: 20px;
+}
+
+.order-content p {
+    font-size: 1.1rem;
+    color: #4a5568;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.order-details {
+    display: grid;
+    gap: 20px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detail i {
+    width: 50px;
+    height: 50px;
+    background: #fffaf0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ed8936;
+    font-size: 1.2rem;
+}
+
+.detail h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #1a202c;
+}
+
+.detail p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+/* Case Visualization */
+.case-visual {
+    text-align: center;
+}
+
+.case-box {
+    width: 300px;
+    height: 300px;
+    background: #fffaf0;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.bottle {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    border-radius: 5px;
+    position: relative;
+}
+
+.bottle::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 10%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.case-visual p {
+    font-weight: 600;
+    color: #ed8936;
+}
+
+/* Bulk Products */
+.bulk-products {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fffaf0, #fed7aa);
+}
+
+.bulk-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.bulk-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(237, 137, 54, 0.1);
+    transition: transform 0.3s;
+}
+
+.bulk-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(237, 137, 54, 0.2);
+}
+
+.bulk-card.recommended {
+    border: 3px solid #ed8936;
+    transform: scale(1.05);
+}
+
+.bulk-card.recommended:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.bulk-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ed8936;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bulk-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1a202c;
+}
+
+.bulk-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ed8936;
+    margin-bottom: 30px;
+}
+
+.bulk-price span {
+    font-size: 1rem;
+    color: #a0aec0;
+    font-weight: 400;
+}
+
+.bulk-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.bulk-features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bulk-features i {
+    color: #38a169;
+}
+
+.btn-bulk-select {
+    width: 100%;
+    padding: 15px;
+    background: #ed8936;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-bulk-select:hover {
+    background: #dd6b20;
+}
+
+/* Registration Form */
+.retailer-registration {
+    padding: 80px 0;
+    background: white;
+}
+
+.registration-form {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f7fafc;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1a202c;
+}
+
+.registration-form > p {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ed8936;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.form-actions .btn-primary {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+.form-note {
+    margin-top: 15px;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.form-note a {
+    color: #ed8936;
+    text-decoration: none;
+}
+
+.form-note a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .order-requirement {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .bulk-card.recommended {
+        transform: scale(1);
+    }
+    
+    .bulk-card.recommended:hover {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .retailer-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .retailer-stats {
+        gap: 30px;
+    }
+    
+    .stat h3 {
+        font-size: 2.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    
+    .registration-form {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .retailer-header h1 {
+        font-size: 2rem;
+    }
+    
+    .retailer-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .bulk-options {
+        grid-template-columns: 1fr;
+    }
+}

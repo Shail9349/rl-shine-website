@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 1,
             name: "RL Shine 500ml",
             description: "Perfect for small households. Lasts up to 30 washes.",
-            price: "$8.99",
+            price: "₹349",
             category: "bottle",
             image: "images/product-1.jpg"
         },
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 2,
             name: "RL Shine 1L",
             description: "Best value for medium households. Up to 60 washes.",
-            price: "$14.99",
+            price: "₹599",
             category: "bottle",
             image: "images/product-2.jpg"
         },
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             name: "RL Shine 2L",
             description: "Economical for large families. Up to 120 washes.",
-            price: "$24.99",
+            price: "₹999",
             category: "bottle",
             image: "images/product-3.jpg"
         },
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 4,
             name: "Twin Pack (2x500ml)",
             description: "Two 500ml bottles. Perfect for trying RL Shine.",
-            price: "$15.99",
+            price: "₹649",
             category: "pack",
             image: "images/product-4.jpg"
         },
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 5,
             name: "Family Pack (3x1L)",
             description: "Three 1L bottles. Great value for families.",
-            price: "$39.99",
+            price: "₹1,599",
             category: "pack",
             image: "images/product-5.jpg"
         },
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 6,
             name: "Subscribe & Save",
             description: "Monthly delivery with 20% discount.",
-            price: "From $12.99/month",
+            price: "From ₹279/month",
             category: "subscribe",
             image: "images/product-6.jpg"
         }

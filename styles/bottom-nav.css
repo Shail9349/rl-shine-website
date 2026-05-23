@@ -1,1 +1,122 @@
+/* ============================================
+   BOTTOM NAVIGATION BAR - MOBILE ONLY
+   Tablet & Desktop par HIDE
+   ============================================ */
 
+/* Default: Sab par hide (desktop + tablet) */
+.bottom-nav {
+    display: none;
+}
+
+/* SIRF MOBILE (screen width less than 768px) */
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 8px 16px 12px;
+        z-index: 1000;
+    }
+
+    .nav-container {
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        cursor: pointer;
+        padding: 6px 12px;
+        border-radius: 40px;
+        min-width: 64px;
+        transition: all 0.2s ease;
+    }
+
+    .nav-icon {
+        font-size: 22px;
+        color: #94a3b8;
+        transition: all 0.2s ease;
+    }
+
+    /* Cart Badge */
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e53e3e;
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+    }
+
+    .nav-icon-wrapper {
+        position: relative;
+    }
+
+    .nav-label {
+        font-size: 11px;
+        font-weight: 500;
+        color: #94a3b8;
+        transition: all 0.2s ease;
+    }
+
+    /* Active State */
+    .nav-item.active .nav-icon {
+        color: #38a169;
+    }
+
+    .nav-item.active .nav-label {
+        color: #38a169;
+        font-weight: 600;
+    }
+
+    /* Hover Effect */
+    .nav-item:hover .nav-icon {
+        color: #38a169;
+    }
+
+    /* Click Effect */
+    .nav-item:active {
+        transform: scale(0.95);
+    }
+
+    /* Safe area for iPhone notch */
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        .bottom-nav {
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+        }
+    }
+}
+
+/* Tablet (769px to 1024px) - Ensure hidden */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .bottom-nav {
+        display: none !important;
+    }
+}
+
+/* Desktop (1025px and above) - Ensure hidden */
+@media (min-width: 1025px) {
+    .bottom-nav {
+        display: none !important;
+    }
+}

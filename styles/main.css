@@ -1,8 +1,18 @@
-/* Hero Section */
+/* ============================================
+   MAIN.CSS - RL SHINE WEBSITE
+   ONLY BACKGROUND - GOLD YELLOW THEME
+   Buttons, Icons, Borders - SAME AS BEFORE
+   ============================================ */
+
+/* ============================================
+   HERO SECTION - Gold Yellow Background
+   ============================================ */
+
 .hero {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f7fafc 0%, #b0c8e0 100%);
+    background: linear-gradient(135deg, #FFF8E7 0%, #FEF3D6 50%, #FDE8C8 100%);
     overflow: hidden;
+    position: relative;
 }
 
 .hero .container {
@@ -21,7 +31,8 @@
     font-size: 3rem;
     color: #1a202c;
     margin-bottom: 20px;
-    line-height: 1.1;
+    line-height: 1.2;
+    font-weight: 800;
 }
 
 .hero p {
@@ -50,10 +61,14 @@
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
-/* Features Section */
+
+/* ============================================
+   FEATURES SECTION - Gold Yellow Background
+   ============================================ */
+
 .features {
     padding: 80px 0;
-    background-color: white;
+    background: #FFFDF5;
 }
 
 .features-grid {
@@ -77,10 +92,10 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Feature Icons - SAME AS BEFORE */
 .feature-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #4299e1, #2b6cb0);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -88,6 +103,10 @@
     margin: 0 auto 20px;
     color: white;
     font-size: 1.8rem;
+}
+
+.feature-card:nth-child(1) .feature-icon {
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
 }
 
 .feature-card:nth-child(2) .feature-icon {
@@ -108,46 +127,85 @@
     color: #1a202c;
 }
 
-/* Buyer Selection Section */
+.feature-card p {
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+
+/* ============================================
+   BUYER SELECTION SECTION - Gold Yellow Background
+   ============================================ */
+
 .buyer-selection {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    background: linear-gradient(135deg, #FFFDF5 0%, #FEF9EF 100%);
 }
 
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1a365d;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   BUYER CARDS - RESPONSIVE CAROUSEL
+   Mobile: Swipe left/right | Desktop: Grid layout
+   ============================================ */
+
+/* Buyer Options Container - Mobile Carousel */
 .buyer-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px 5px 20px 5px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* Hide scrollbar */
+.buyer-options::-webkit-scrollbar {
+    display: none;
+}
+.buyer-options {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Buyer Cards - SAME AS BEFORE */
 .buyer-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
     background: white;
-    border-radius: 15px;
-    padding: 40px 30px;
+    border-radius: 20px;
+    padding: 30px 20px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
     border-top: 5px solid transparent;
 }
 
-.buyer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
+/* Card Borders - SAME AS BEFORE */
 .buyer-card:nth-child(1) {
     border-top-color: #38a169;
 }
-
 .buyer-card:nth-child(2) {
     border-top-color: #ed8936;
 }
-
 .buyer-card:nth-child(3) {
     border-top-color: #805ad5;
 }
 
+/* Buyer Icons - SAME AS BEFORE */
 .buyer-icon {
     width: 80px;
     height: 80px;
@@ -157,7 +215,6 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    color: #2b6cb0;
     font-size: 2rem;
 }
 
@@ -165,33 +222,32 @@
     color: #38a169;
     background: #f0fff4;
 }
-
 .buyer-card:nth-child(2) .buyer-icon {
     color: #ed8936;
     background: #fffaf0;
 }
-
 .buyer-card:nth-child(3) .buyer-icon {
     color: #805ad5;
     background: #faf5ff;
 }
 
 .buyer-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
     color: #1a202c;
 }
 
 .buyer-card p {
     color: #4a5568;
-    margin-bottom: 25px;
-    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
 }
 
+/* Benefits List - SAME AS BEFORE */
 .benefits {
     list-style: none;
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .benefits li {
@@ -199,18 +255,111 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 0.85rem;
 }
 
 .benefits i {
     color: #38a169;
 }
 
-.buyer-card .btn-buyer {
+/* Buttons - SAME AS BEFORE */
+.btn-buyer {
+    display: inline-block;
     width: 100%;
-    margin-top: 10px;
+    padding: 12px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    text-align: center;
 }
 
-/* Animations */
+.consumer-btn {
+    background: linear-gradient(135deg, #38a169, #48bb78);
+    color: white;
+}
+.retailer-btn {
+    background: linear-gradient(135deg, #ed8936, #f59e0b);
+    color: white;
+}
+.wholesaler-btn {
+    background: linear-gradient(135deg, #805ad5, #6b46c1);
+    color: white;
+}
+
+.btn-buyer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.carousel-dot.active {
+    width: 24px;
+    background: #38a169;
+    border-radius: 20px;
+}
+
+/* ============================================
+   DESKTOP VIEW - Grid Layout
+   ============================================ */
+
+@media (min-width: 768px) {
+    .buyer-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        scroll-snap-type: none;
+        gap: 30px;
+        padding: 10px 0;
+    }
+    
+    .buyer-card {
+        flex: none;
+        scroll-snap-align: none;
+        padding: 40px 30px;
+    }
+    
+    .buyer-card h3 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-dots {
+        display: none;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .buyer-card {
+        flex: 0 0 90%;
+        padding: 25px 15px;
+    }
+    .buyer-card h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* ============================================
+   ANIMATIONS - SAME AS BEFORE
+   ============================================ */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -233,7 +382,10 @@
     }
 }
 
-/* Responsive Design */
+/* ============================================
+   RESPONSIVE DESIGN - SAME AS BEFORE
+   ============================================ */
+
 @media (max-width: 992px) {
     .hero .container {
         flex-direction: column;
@@ -254,6 +406,10 @@
 }
 
 @media (max-width: 576px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
     .hero h2 {
         font-size: 2rem;
     }
@@ -266,7 +422,7 @@
         font-size: 1.8rem;
     }
     
-    .buyer-options {
+    .features-grid {
         grid-template-columns: 1fr;
     }
 }

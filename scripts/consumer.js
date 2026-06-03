@@ -7,116 +7,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     
     const products = [
-        {
-            id: 1,
-            name: "RL Shine Fresh Scent",
-            description: "Powerful cleaning with fresh lemon fragrance. Up to 30 washes.",
-            basePrice: 109,
-            oldPrice: 199,
-            discount: 45,
-            rating: 4.7,
-            reviewCount: 1423,
-            badge: "Bestseller",
-            category: "bottle",
-            variants: ["500ml", "1L", "2L"],
-            defaultVariant: "500ml",
-            image: "images/product-1.jpg"
-        },
-        {
-            id: 2,
-            name: "RL Shine Citrus Boost",
-            description: "Removes tough grease with citrus power. Up to 60 washes.",
-            basePrice: 199,
-            oldPrice: 349,
-            discount: 43,
-            rating: 4.8,
-            reviewCount: 892,
-            badge: "Popular",
-            category: "bottle",
-            variants: ["1L", "2L", "5L"],
-            defaultVariant: "1L",
-            image: "images/product-2.jpg"
-        },
-        {
-            id: 3,
-            name: "RL Shine Tough Grease",
-            description: "Maximum strength for heavy-duty cleaning. Up to 120 washes.",
-            basePrice: 349,
-            oldPrice: 599,
-            discount: 42,
-            rating: 4.9,
-            reviewCount: 2456,
-            badge: "Eco Choice",
-            category: "bottle",
-            variants: ["2L", "5L"],
-            defaultVariant: "2L",
-            image: "images/product-3.jpg"
-        },
-        {
-            id: 4,
-            name: "RL Shine Twin Pack",
-            description: "Two bottles for double the value. Perfect for families.",
-            basePrice: 218,
-            oldPrice: 398,
-            discount: 45,
-            rating: 4.6,
-            reviewCount: 678,
-            badge: "Value Deal",
-            category: "pack",
-            variants: ["2x500ml", "2x1L"],
-            defaultVariant: "2x500ml",
-            image: "images/product-4.jpg"
-        },
-        {
-            id: 5,
-            name: "RL Shine Family Pack",
-            description: "Three bottles. Best value for large households.",
-            basePrice: 327,
-            oldPrice: 597,
-            discount: 45,
-            rating: 4.8,
-            reviewCount: 1102,
-            badge: "Save 20%",
-            category: "pack",
-            variants: ["3x500ml", "3x1L"],
-            defaultVariant: "3x500ml",
-            image: "images/product-5.jpg"
-        },
-        {
-            id: 6,
-            name: "RL Shine Subscribe & Save",
-            description: "Monthly delivery. Never run out. Cancel anytime.",
-            basePrice: 149,
-            oldPrice: 199,
-            discount: 25,
-            rating: 4.9,
-            reviewCount: 567,
-            badge: "Subscribe",
-            category: "subscribe",
-            variants: ["Monthly", "Quarterly"],
-            defaultVariant: "Monthly",
-            image: "images/product-6.jpg"
-        }
-    ];
+    {
+        id: 1,
+        name: "RL Shine 500ml",
+        description: "Powerful cleaning with fresh fragrance. Up to 30 washes.",
+        basePrice: 109,
+        oldPrice: 199,
+        discount: 45,
+        rating: 4.7,
+        reviewCount: 1423,
+        badge: "Bestseller",
+        category: "bottle",
+        variants: ["500ml"],
+        defaultVariant: "500ml",
+        image: "images/single.png"
+    },
+    {
+        id: 2,
+        name: "RL Shine Twin Pack",
+        description: "2 x 500ml bottles. Double the value for families.",
+        basePrice: 199,
+        oldPrice: 398,
+        discount: 50,
+        rating: 4.8,
+        reviewCount: 892,
+        badge: "Value Deal",
+        category: "pack",
+        variants: ["2x500ml"],
+        defaultVariant: "2x500ml",
+        image: "images/twin.png"
+    },
+    {
+        id: 3,
+        name: "RL Shine Triple Pack",
+        description: "3 x 500ml bottles. Best value for money!",
+        basePrice: 249,
+        oldPrice: 597,
+        discount: 58,
+        rating: 4.9,
+        reviewCount: 567,
+        badge: "Save 20%",
+        category: "pack",
+        variants: ["3x500ml"],
+        defaultVariant: "3x500ml",
+        image: "images/triple.png"
+    }
+];
 
     // Variant price mapping
-    const variantPrices = {
-        1: { "500ml": 109, "1L": 199, "2L": 349 },
-        2: { "1L": 199, "2L": 349, "5L": 799 },
-        3: { "2L": 349, "5L": 799 },
-        4: { "2x500ml": 218, "2x1L": 399 },
-        5: { "3x500ml": 327, "3x1L": 599 },
-        6: { "Monthly": 149, "Quarterly": 399 }
-    };
+   const variantPrices = {
+    1: { "500ml": 109 },
+    2: { "2x500ml": 199 },
+    3: { "3x500ml": 249 }
+};
 
-    const variantOldPrices = {
-        1: { "500ml": 199, "1L": 349, "2L": 649 },
-        2: { "1L": 349, "2L": 599, "5L": 1299 },
-        3: { "2L": 599, "5L": 1399 },
-        4: { "2x500ml": 398, "2x1L": 698 },
-        5: { "3x500ml": 597, "3x1L": 1049 },
-        6: { "Monthly": 199, "Quarterly": 499 }
-    };
+   const variantOldPrices = {
+    1: { "500ml": 199 },
+    2: { "2x500ml": 398 },
+    3: { "3x500ml": 597 }
+};
 
     // ============================================
     // CART SYSTEM

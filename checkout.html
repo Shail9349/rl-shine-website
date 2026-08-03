@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — RL Shine</title>
+<meta name="description" content="Complete your RL Shine order securely. UPI, cards, COD and bank transfer accepted.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="has-bottom-nav">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">✨</span> RL Shine</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="policies.html">Policies</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="checkout.html" class="icon-btn" aria-label="Cart">🛒<span class="cart-badge" data-cart-badge>0</span></a>
+      <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="section checkout-section">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:36px;">
+      <span class="eyebrow">Checkout</span>
+      <h1>Complete your order</h1>
+    </div>
+
+    <div id="checkoutContent" class="checkout-grid">
+
+      <!-- ===== LEFT: Cart + Details + Payment ===== -->
+      <div class="checkout-left reveal">
+
+        <div class="glass block" id="cartBlock">
+          <h3>Your Cart</h3>
+          <div id="cartItems"></div>
+        </div>
+
+        <form class="glass block" id="detailsForm">
+          <h3>Delivery Details</h3>
+          <div class="field-row">
+            <div class="field"><label for="fName">Full Name *</label><input type="text" id="fName" name="name" required></div>
+            <div class="field"><label for="fPhone">Phone *</label><input type="tel" id="fPhone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile"></div>
+          </div>
+          <div class="field"><label for="fEmail">Email *</label><input type="email" id="fEmail" name="email" required></div>
+          <div class="field"><label for="fAddress">Delivery Address *</label><textarea id="fAddress" name="address" rows="3" required placeholder="House no, street, city, state, PIN"></textarea></div>
+        </form>
+
+        <div class="glass block">
+          <h3>Payment Method</h3>
+          <div class="pay-grid">
+            <label class="pay-option"><input type="radio" name="payMethod" value="UPI" checked><span>📲 UPI</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="GPay"><span>🟢 Google Pay</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="AmazonPay"><span>🟠 Amazon Pay</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="Card"><span>💳 Visa / Mastercard / Amex</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="COD"><span>💵 Cash on Delivery</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="Bank"><span>🏦 Bank Transfer (NEFT/IMPS)</span></label>
+          </div>
+
+          <div id="upiPanel" class="upi-panel">
+            <img src="images/upi-qr-code.png" alt="RL Shine UPI QR Code" class="upi-qr" data-fallback="images/product-hero.png">
+            <div>
+              <p><strong>UPI ID:</strong> 7982531912-k323@ybl</p>
+              <p><strong>Business Name:</strong> RL Shine</p>
+              <p class="hint">Scan the QR or pay to the UPI ID above, then place your order.</p>
+            </div>
+          </div>
+
+          <div class="secure-badge">🔒 100% Secure Payments</div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: Order Summary ===== -->
+      <div class="checkout-right reveal reveal-delay-1">
+        <div class="glass summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="sumSubtotal">₹0</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="sumShipping">₹0</span></div>
+          <div class="summary-row" id="freeShipNote" hidden><span colspan="2" style="color:#1a7f4c;font-size:.82rem;">✔ Free shipping applied</span></div>
+          <div class="summary-row"><span>GST (18%)</span><span id="sumGst">₹0</span></div>
+          <hr>
+          <div class="summary-row total-row"><span>Grand Total</span><span id="sumTotal">₹0</span></div>
+          <button class="btn btn-primary btn-block" id="placeOrderBtn" style="margin-top:20px;">Place Order</button>
+          <p class="hint" style="text-align:center;margin-top:10px;">By placing your order you agree to our <a href="policies.html#terms" style="text-decoration:underline;">Terms & Conditions</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== EMPTY STATE ===== -->
+    <div class="glass empty-state" id="emptyState" hidden>
+      <div style="font-size:2.4rem;">🛒</div>
+      <h3>Your cart is empty</h3>
+      <p>Looks like you haven't added anything yet.</p>
+      <a href="shop.html" class="btn btn-primary">Browse Products</a>
+    </div>
+
+    <!-- ===== CONFIRMATION STATE ===== -->
+    <div class="glass confirm-state" id="confirmState" hidden>
+      <div class="confirm-icon">✅</div>
+      <h2>Order Placed Successfully!</h2>
+      <p>Thank you, <span id="confName">friend</span> — your RL Shine order has been received.</p>
+      <div class="confirm-details glass">
+        <div><span>Order ID</span><strong id="confOrderId">—</strong></div>
+        <div><span>Total Paid</span><strong id="confTotal">—</strong></div>
+        <div><span>Payment Method</span><strong id="confMethod">—</strong></div>
+        <div><span>Delivery To</span><strong id="confAddress">—</strong></div>
+      </div>
+      <p class="hint">A confirmation email will be sent to <strong id="confEmail"></strong>. Delivery in 3–5 business days.</p>
+      <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="index.html" class="brand" style="color:#fff;"><span class="brand-mark">✨</span> RL Shine</a>
+      <p style="margin-top:14px;">Ab Bartan Bhi Muskurayenge. Because cleaning shouldn't feel heavy.</p>
+      <div class="pay-icons"><span>GPay</span><span>UPI</span><span>Visa</span><span>Mastercard</span><span>Amex</span><span>COD</span></div>
+    </div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li>
+      <li><a href="shop.html#retailer">Retailer</a></li><li><a href="shop.html#wholesaler">Wholesaler</a></li>
+      <li><a href="policies.html">Policies</a></li></ul></div>
+    <div><h4>Support</h4><ul>
+      <li><a href="index.html#contact">Contact Us</a></li><li><a href="policies.html#shipping">Shipping Policy</a></li>
+      <li><a href="policies.html#returns">Returns & Refunds</a></li><li><a href="policies.html#privacy">Privacy Policy</a></li></ul></div>
+    <div><h4>Contact</h4>
+      <p>Saket, New Delhi - 110017</p>
+      <p><a href="mailto:rlshinebusiness@gmail.com">rlshinebusiness@gmail.com</a></p>
+      <p><a href="tel:+917982531912">+91 79825 31912</a></p>
+      <p>Mon–Sat, 9AM–6PM IST</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span data-year></span> RL Shine. All rights reserved.</span>
+    <span>Made with 💛 by Velora Web Tech</span>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="index.html" class="bn-item"><span class="bn-icon">🏠</span>Home</a>
+    <a href="shop.html" class="bn-item"><span class="bn-icon">🛍️</span>Shop</a>
+    <a href="index.html#contact" class="bn-item"><span class="bn-icon">👤</span>Account</a>
+    <a href="checkout.html" class="bn-item active" style="position:relative;">
+      <span class="bn-icon">🛒</span>Cart
+      <span class="bn-cart-badge" data-cart-badge style="display:none;">0</span>
+    </a>
+  </div>
+</nav>
+
+<script src="app.js"></script>
+<script src="checkout.js"></script>
+<style>
+  .checkout-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:30px; align-items:start; }
+  .checkout-left{ display:flex; flex-direction:column; gap:24px; }
+  .block{ padding:28px; }
+  .block h3{ margin-bottom:18px; }
+
+  .cart-item{ display:flex; gap:14px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); }
+  .cart-item:last-child{ border-bottom:none; }
+  .cart-item img{ width:56px; height:56px; object-fit:contain; background:rgba(255,182,39,0.1); border-radius:12px; padding:6px; }
+  .cart-item-info{ flex:1; }
+  .cart-item-info h4{ font-size:.95rem; margin:0 0 3px; font-family:var(--font-body); font-weight:700; color:var(--ink); }
+  .cart-item-info span{ font-size:.8rem; color:var(--ink-soft); }
+  .cart-item-qty{ display:flex; align-items:center; gap:8px; }
+  .cart-item-qty button{ width:26px; height:26px; border-radius:50%; border:1px solid var(--line); background:#fff; font-weight:700; }
+  .cart-item-price{ font-weight:700; color:var(--teal-dark); min-width:70px; text-align:right; }
+  .cart-remove{ background:none; border:none; color:#c0392b; font-size:.78rem; margin-left:10px; text-decoration:underline; }
+
+  .pay-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+  .pay-option{ display:flex; align-items:center; gap:10px; padding:13px 16px; border:1.5px solid var(--line); border-radius:var(--radius-sm); background:rgba(255,255,255,0.5); cursor:pointer; transition:.2s ease; font-size:.9rem; font-weight:600; }
+  .pay-option:has(input:checked){ border-color:var(--marigold-dark); background:rgba(255,182,39,0.12); }
+  .pay-option input{ accent-color:var(--marigold-dark); }
+  .upi-panel{ display:none; gap:18px; align-items:center; padding:18px; background:rgba(11,79,74,0.05); border-radius:var(--radius-md); margin-bottom:16px; }
+  .upi-panel.show{ display:flex; }
+  .upi-qr{ width:90px; height:90px; object-fit:contain; background:#fff; border-radius:10px; padding:6px; }
+  .upi-panel p{ margin:0 0 4px; font-size:.88rem; }
+  .secure-badge{ display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.85rem; color:var(--teal-dark); background:rgba(11,79,74,0.08); padding:8px 16px; border-radius:var(--radius-pill); }
+
+  .summary-card{ padding:28px; position:sticky; top:calc(var(--nav-h) + 20px); }
+  .summary-row{ display:flex; justify-content:space-between; font-size:.92rem; color:var(--ink-soft); padding:8px 0; }
+  .summary-row.total-row{ font-size:1.15rem; font-weight:800; color:var(--teal-dark); font-family:var(--font-display); padding-top:12px; }
+  .summary-card hr{ border:none; border-top:1px solid var(--line); margin:8px 0; }
+
+  .empty-state, .confirm-state{ text-align:center; padding:60px 30px; max-width:520px; margin:0 auto; }
+  .empty-state h3{ margin-top:10px; }
+  .confirm-icon{ font-size:3rem; margin-bottom:10px; }
+  .confirm-details{ text-align:left; padding:20px 24px; margin:22px 0; }
+  .confirm-details div{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .confirm-details div:last-child{ border-bottom:none; }
+  .confirm-details span{ color:var(--ink-soft); }
+
+  @media (max-width:960px){
+    .checkout-grid{ grid-template-columns:1fr; }
+    .summary-card{ position:static; }
+  }
+  @media (max-width:520px){
+    .pay-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</body>
+</html>

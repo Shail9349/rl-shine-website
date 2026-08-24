@@ -317,6 +317,35 @@
     .highlight-grid, .why-grid{ grid-template-columns:1fr; }
     .hero-stats{ gap:22px; }
   }
+  /* Additional responsive styles for index.html */
+@media (max-width: 860px){
+  .hero-inner{ grid-template-columns:1fr; text-align:center; }
+  .hero-copy{ display:flex; flex-direction:column; align-items:center; }
+  .hero-actions{ justify-content:center; flex-direction:column; width:100%; }
+  .hero-actions .btn{ width:100%; justify-content:center; }
+  .hero-stats{ justify-content:center; gap:16px; }
+  .about-grid{ grid-template-columns:1fr; text-align:center; }
+  .about-media{ order:-1; }
+  .about-list{ text-align:left; }
+  .trust-row{ justify-content:center; flex-wrap:wrap; }
+  .contact-grid{ grid-template-columns:1fr; }
+  .contact-info{ text-align:center; }
+  .highlight-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+  .why-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+}
+
+@media (max-width: 640px){
+  .highlight-grid{ grid-template-columns:1fr; }
+  .why-grid{ grid-template-columns:1fr; }
+  .hero-stats{ gap:12px; }
+  .hero-stats strong{ font-size:1.2rem; }
+  .hero-img{ max-width:160px; }
+  .hero-chip{ font-size:0.65rem; padding:4px 10px; }
+  .hero-blob{ width:180px; height:180px; }
+  .about-img{ max-width:180px; }
+  .contact-detail{ padding:14px 16px; }
+  .contact-form{ padding:20px; }
+}
 </style>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout — RL Shine</title>
-<meta name="description" content="Complete your RL Shine order securely. UPI, cards, COD and bank transfer accepted.">
+<meta name="description" content="Complete your RL Shine order securely. UPI, COD and WhatsApp accepted.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="has-bottom-nav">
@@ -37,7 +37,7 @@
 
     <div id="checkoutContent" class="checkout-grid">
 
-      <!-- ===== LEFT: Cart + Details + Payment ===== -->
+      <!-- LEFT: Cart + Details + Payment -->
       <div class="checkout-left reveal">
 
         <div class="glass block" id="cartBlock">
@@ -45,76 +45,96 @@
           <div id="cartItems"></div>
         </div>
 
-        <form class="glass block" id="detailsForm">
+        <form class="glass block" id="detailsForm" novalidate>
           <h3>Delivery Details</h3>
           <div class="field-row">
-            <div class="field"><label for="fName">Full Name *</label><input type="text" id="fName" name="name" required></div>
+            <div class="field"><label for="fName">Full Name *</label><input type="text" id="fName" name="name" required placeholder="Your full name"></div>
             <div class="field"><label for="fPhone">Phone *</label><input type="tel" id="fPhone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile"></div>
           </div>
-          <div class="field"><label for="fEmail">Email *</label><input type="email" id="fEmail" name="email" required></div>
-          <div class="field"><label for="fAddress">Delivery Address *</label><textarea id="fAddress" name="address" rows="3" required placeholder="House no, street, city, state, PIN"></textarea></div>
+          <div class="field"><label for="fEmail">Email (Optional)</label><input type="email" id="fEmail" name="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="fAddress">Delivery Address *</label><textarea id="fAddress" name="address" rows="2" required placeholder="House no, street, area/locality"></textarea></div>
+          <div class="field-row">
+            <div class="field"><label for="fCity">City *</label><input type="text" id="fCity" name="city" required placeholder="City"></div>
+            <div class="field"><label for="fState">State *</label><input type="text" id="fState" name="state" required placeholder="State"></div>
+          </div>
+          <div class="field" style="max-width:220px;">
+            <label for="fPincode">PIN Code *</label>
+            <input type="text" id="fPincode" name="pincode" required pattern="[0-9]{6}" inputmode="numeric" maxlength="6" placeholder="6-digit PIN">
+          </div>
         </form>
 
         <div class="glass block">
           <h3>Payment Method</h3>
           <div class="pay-grid">
-            <label class="pay-option"><input type="radio" name="payMethod" value="UPI" checked><span>📲 UPI</span></label>
-            <label class="pay-option"><input type="radio" name="payMethod" value="GPay"><span>🟢 Google Pay</span></label>
-            <label class="pay-option"><input type="radio" name="payMethod" value="AmazonPay"><span>🟠 Amazon Pay</span></label>
-            <label class="pay-option"><input type="radio" name="payMethod" value="Card"><span>💳 Visa / Mastercard / Amex</span></label>
-            <label class="pay-option"><input type="radio" name="payMethod" value="COD"><span>💵 Cash on Delivery</span></label>
-            <label class="pay-option"><input type="radio" name="payMethod" value="Bank"><span>🏦 Bank Transfer (NEFT/IMPS)</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="COD" checked><span>💵 Cash on Delivery</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="UPI"><span>📲 UPI</span></label>
+            <label class="pay-option"><input type="radio" name="payMethod" value="WhatsApp"><span>💬 WhatsApp Order</span></label>
           </div>
 
+          <!-- UPI Panel -->
           <div id="upiPanel" class="upi-panel">
-            <img src="images/upi-qr-code.png" alt="RL Shine UPI QR Code" class="upi-qr" data-fallback="images/product-hero.png">
-            <div>
-              <p><strong>UPI ID:</strong> 7982531912-k323@ybl</p>
-              <p><strong>Business Name:</strong> RL Shine</p>
-              <p class="hint">Scan the QR or pay to the UPI ID above, then place your order.</p>
+            <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%; justify-content: center;">
+              <img src="images/rlshine_qrcode.jpeg" alt="RL Shine UPI QR Code" class="upi-qr" data-fallback="images/product-hero.png" style="width: 120px; height: 120px; object-fit: contain; background: #fff; border-radius: 12px; padding: 8px; max-width: 100%;">
+              <div style="flex: 1; min-width: 180px;">
+                <p><strong>UPI ID:</strong> 7982531912-k323@ybl</p>
+                <p><strong>Business Name:</strong> RL Shine</p>
+                <p class="hint" style="font-size: clamp(0.8rem, 1vw, 0.85rem); color: var(--ink-soft);">
+                  Scan the QR or pay to the UPI ID above. After payment, confirm in the popup.
+                </p>
+              </div>
             </div>
+          </div>
+
+          <!-- WhatsApp Panel -->
+          <div id="whatsappPanel" class="whatsapp-panel">
+            <p>📱 Click the button below to place your order on WhatsApp</p>
+            <p class="hint" style="font-size:clamp(0.8rem, 0.9vw, 0.85rem); color:var(--ink-soft);">Please fill your delivery details above before proceeding — the button will not work until all required fields are complete.</p>
+            <button type="button" class="btn btn-primary" id="whatsappOrderBtn">💬 Order on WhatsApp</button>
           </div>
 
           <div class="secure-badge">🔒 100% Secure Payments</div>
         </div>
       </div>
 
-      <!-- ===== RIGHT: Order Summary ===== -->
+      <!-- RIGHT: Order Summary -->
       <div class="checkout-right reveal reveal-delay-1">
         <div class="glass summary-card">
           <h3>Order Summary</h3>
           <div class="summary-row"><span>Subtotal</span><span id="sumSubtotal">₹0</span></div>
           <div class="summary-row"><span>Shipping</span><span id="sumShipping">₹0</span></div>
-          <div class="summary-row" id="freeShipNote" hidden><span colspan="2" style="color:#1a7f4c;font-size:.82rem;">✔ Free shipping applied</span></div>
+          <div class="summary-row" id="freeShipNote" hidden>
+            <span colspan="2" style="color:#1a7f4c;font-size:clamp(0.75rem, 0.9vw, 0.82rem);font-weight:600;">✔ Free shipping applied</span>
+          </div>
           <div class="summary-row"><span>GST (18%)</span><span id="sumGst">₹0</span></div>
           <hr>
           <div class="summary-row total-row"><span>Grand Total</span><span id="sumTotal">₹0</span></div>
-          <button class="btn btn-primary btn-block" id="placeOrderBtn" style="margin-top:20px;">Place Order</button>
-          <p class="hint" style="text-align:center;margin-top:10px;">By placing your order you agree to our <a href="policies.html#terms" style="text-decoration:underline;">Terms & Conditions</a>.</p>
+          <button type="button" class="btn btn-primary btn-block" id="placeOrderBtn" style="margin-top:20px;">Place Order (COD)</button>
+          <p class="hint" style="text-align:center;margin-top:10px;font-size:clamp(0.75rem, 0.9vw, 0.85rem);">By placing your order you agree to our <a href="policies.html#terms" style="text-decoration:underline;">Terms & Conditions</a>.</p>
         </div>
       </div>
     </div>
 
-    <!-- ===== EMPTY STATE ===== -->
+    <!-- EMPTY STATE -->
     <div class="glass empty-state" id="emptyState" hidden>
-      <div style="font-size:2.4rem;">🛒</div>
+      <div style="font-size:clamp(2rem, 4vw, 2.4rem);">🛒</div>
       <h3>Your cart is empty</h3>
       <p>Looks like you haven't added anything yet.</p>
       <a href="shop.html" class="btn btn-primary">Browse Products</a>
     </div>
 
-    <!-- ===== CONFIRMATION STATE ===== -->
+    <!-- CONFIRMATION STATE -->
     <div class="glass confirm-state" id="confirmState" hidden>
       <div class="confirm-icon">✅</div>
       <h2>Order Placed Successfully!</h2>
       <p>Thank you, <span id="confName">friend</span> — your RL Shine order has been received.</p>
       <div class="confirm-details glass">
         <div><span>Order ID</span><strong id="confOrderId">—</strong></div>
-        <div><span>Total Paid</span><strong id="confTotal">—</strong></div>
+        <div><span>Total Amount</span><strong id="confTotal">—</strong></div>
         <div><span>Payment Method</span><strong id="confMethod">—</strong></div>
         <div><span>Delivery To</span><strong id="confAddress">—</strong></div>
+        <div id="confEmailRow" hidden><span>Email</span><strong id="confEmail">—</strong></div>
       </div>
-      <p class="hint">A confirmation email will be sent to <strong id="confEmail"></strong>. Delivery in 3–5 business days.</p>
+      <p class="hint">A confirmation will be sent to your phone. Delivery in 3–5 business days.</p>
       <a href="index.html" class="btn btn-primary">Back to Home</a>
     </div>
 
@@ -163,7 +183,9 @@
 
 <script src="app.js"></script>
 <script src="checkout.js"></script>
+
 <style>
+  /* Mobile-first responsive styles for checkout */
   .checkout-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:30px; align-items:start; }
   .checkout-left{ display:flex; flex-direction:column; gap:24px; }
   .block{ padding:28px; }
@@ -171,44 +193,71 @@
 
   .cart-item{ display:flex; gap:14px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); }
   .cart-item:last-child{ border-bottom:none; }
-  .cart-item img{ width:56px; height:56px; object-fit:contain; background:rgba(255,182,39,0.1); border-radius:12px; padding:6px; }
-  .cart-item-info{ flex:1; }
-  .cart-item-info h4{ font-size:.95rem; margin:0 0 3px; font-family:var(--font-body); font-weight:700; color:var(--ink); }
-  .cart-item-info span{ font-size:.8rem; color:var(--ink-soft); }
-  .cart-item-qty{ display:flex; align-items:center; gap:8px; }
-  .cart-item-qty button{ width:26px; height:26px; border-radius:50%; border:1px solid var(--line); background:#fff; font-weight:700; }
-  .cart-item-price{ font-weight:700; color:var(--teal-dark); min-width:70px; text-align:right; }
-  .cart-remove{ background:none; border:none; color:#c0392b; font-size:.78rem; margin-left:10px; text-decoration:underline; }
+  .cart-item img{ width:56px; height:56px; object-fit:contain; background:rgba(255,182,39,0.1); border-radius:12px; padding:6px; flex-shrink:0; }
+  .cart-item-info{ flex:1; min-width:0; }
+  .cart-item-info h4{ font-size:clamp(0.85rem, 1.1vw, 0.95rem); margin:0 0 3px; font-family:var(--font-body); font-weight:700; color:var(--ink); }
+  .cart-item-info span{ font-size:clamp(0.7rem, 0.9vw, 0.8rem); color:var(--ink-soft); }
+  .cart-item-qty{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:4px; }
+  .cart-item-qty button{ width:clamp(24px, 3vw, 28px); height:clamp(24px, 3vw, 28px); border-radius:50%; border:1.5px solid var(--line); background:#fff; font-weight:700; font-size:clamp(0.85rem, 1vw, 1rem); cursor:pointer; transition:0.2s; display:flex; align-items:center; justify-content:center; }
+  .cart-item-qty button:hover:not(:disabled){ background:var(--marigold-light); border-color:var(--marigold-dark); }
+  .cart-item-qty button:disabled{ opacity:.4; cursor:not-allowed; }
+  .cart-item-qty .qty-value{ font-weight:700; min-width:20px; text-align:center; font-size:clamp(0.85rem, 1vw, 1rem); }
+  .cart-item-price{ font-weight:700; color:var(--teal-dark); min-width:70px; text-align:right; font-size:clamp(0.85rem, 1vw, 1rem); flex-shrink:0; }
+  .cart-remove{ background:none; border:none; color:#c0392b; font-size:clamp(0.65rem, 0.8vw, 0.78rem); text-decoration:underline; cursor:pointer; padding:4px 8px; }
 
-  .pay-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
-  .pay-option{ display:flex; align-items:center; gap:10px; padding:13px 16px; border:1.5px solid var(--line); border-radius:var(--radius-sm); background:rgba(255,255,255,0.5); cursor:pointer; transition:.2s ease; font-size:.9rem; font-weight:600; }
+  .pay-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:20px; }
+  .pay-option{ display:flex; align-items:center; gap:10px; padding:clamp(10px, 1.2vh, 13px) clamp(12px, 1.5vw, 16px); border:1.5px solid var(--line); border-radius:var(--radius-sm); background:rgba(255,255,255,0.5); cursor:pointer; transition:.2s ease; font-size:clamp(0.8rem, 1vw, 0.9rem); font-weight:600; }
   .pay-option:has(input:checked){ border-color:var(--marigold-dark); background:rgba(255,182,39,0.12); }
   .pay-option input{ accent-color:var(--marigold-dark); }
+  
   .upi-panel{ display:none; gap:18px; align-items:center; padding:18px; background:rgba(11,79,74,0.05); border-radius:var(--radius-md); margin-bottom:16px; }
   .upi-panel.show{ display:flex; }
-  .upi-qr{ width:90px; height:90px; object-fit:contain; background:#fff; border-radius:10px; padding:6px; }
-  .upi-panel p{ margin:0 0 4px; font-size:.88rem; }
-  .secure-badge{ display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.85rem; color:var(--teal-dark); background:rgba(11,79,74,0.08); padding:8px 16px; border-radius:var(--radius-pill); }
+  .upi-qr{ width:clamp(80px, 10vw, 90px); height:clamp(80px, 10vw, 90px); object-fit:contain; background:#fff; border-radius:10px; padding:6px; }
+  .upi-panel p{ margin:0 0 4px; font-size:clamp(0.8rem, 1vw, 0.88rem); }
+
+  .whatsapp-panel{ display:none; padding:18px; background:rgba(37,211,102,0.08); border-radius:var(--radius-md); margin-bottom:16px; text-align:center; }
+  .whatsapp-panel.show{ display:block; }
+  .whatsapp-panel p{ margin-bottom:12px; }
+  
+  .secure-badge{ display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:clamp(0.75rem, 0.9vw, 0.85rem); color:var(--teal-dark); background:rgba(11,79,74,0.08); padding:8px 16px; border-radius:var(--radius-pill); }
 
   .summary-card{ padding:28px; position:sticky; top:calc(var(--nav-h) + 20px); }
-  .summary-row{ display:flex; justify-content:space-between; font-size:.92rem; color:var(--ink-soft); padding:8px 0; }
-  .summary-row.total-row{ font-size:1.15rem; font-weight:800; color:var(--teal-dark); font-family:var(--font-display); padding-top:12px; }
+  .summary-row{ display:flex; justify-content:space-between; font-size:clamp(0.82rem, 1vw, 0.92rem); color:var(--ink-soft); padding:8px 0; }
+  .summary-row.total-row{ font-size:clamp(1rem, 1.3vw, 1.15rem); font-weight:800; color:var(--teal-dark); font-family:var(--font-display); padding-top:12px; }
   .summary-card hr{ border:none; border-top:1px solid var(--line); margin:8px 0; }
 
-  .empty-state, .confirm-state{ text-align:center; padding:60px 30px; max-width:520px; margin:0 auto; }
+  .empty-state, .confirm-state{ text-align:center; padding:clamp(40px, 8vh, 60px) 30px; max-width:520px; margin:0 auto; }
   .empty-state h3{ margin-top:10px; }
-  .confirm-icon{ font-size:3rem; margin-bottom:10px; }
-  .confirm-details{ text-align:left; padding:20px 24px; margin:22px 0; }
-  .confirm-details div{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .confirm-icon{ font-size:clamp(2.5rem, 4vw, 3rem); margin-bottom:10px; }
+  .confirm-details{ text-align:left; padding:clamp(16px, 2vh, 20px) clamp(16px, 2vw, 24px); margin:22px 0; }
+  .confirm-details div{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); font-size:clamp(0.8rem, 1vw, 0.9rem); gap:12px; }
   .confirm-details div:last-child{ border-bottom:none; }
-  .confirm-details span{ color:var(--ink-soft); }
+  .confirm-details span{ color:var(--ink-soft); flex-shrink:0; }
+  .confirm-details strong{ text-align:right; word-break:break-word; }
 
+  /* Tablet */
   @media (max-width:960px){
-    .checkout-grid{ grid-template-columns:1fr; }
+    .checkout-grid{ grid-template-columns:1fr; gap:20px; }
     .summary-card{ position:static; }
   }
-  @media (max-width:520px){
-    .pay-grid{ grid-template-columns:1fr; }
+
+  /* Mobile */
+  @media (max-width:640px){
+    .pay-grid{ grid-template-columns:1fr; gap:8px; }
+    .cart-item{ flex-wrap:wrap; gap:8px; }
+    .cart-item-price{ min-width:100%; text-align:left; padding-left:70px; }
+    .block{ padding:20px; }
+    .block h3{ font-size:1.1rem; }
+    .upi-panel{ flex-direction:column; text-align:center; }
+    .upi-qr{ width:100px; height:100px; }
+  }
+
+  @media (max-width:400px){
+    .block{ padding:16px; }
+    .cart-item{ padding:10px 0; }
+    .cart-item img{ width:40px; height:40px; }
+    .cart-item-price{ padding-left:54px; font-size:0.85rem; }
+    .summary-card{ padding:20px; }
   }
 </style>
 </body>

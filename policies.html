@@ -165,6 +165,22 @@
     .toc{ position:static; display:flex; gap:16px; flex-wrap:wrap; }
     .toc ul{ display:flex; gap:16px; flex-wrap:wrap; }
   }
+  /* Additional responsive styles for policies.html */
+@media (max-width: 860px){
+  .policies-grid{ grid-template-columns:1fr; }
+  .toc{ position:static; display:flex; gap:12px; flex-wrap:wrap; padding:16px; }
+  .toc ul{ display:flex; gap:12px; flex-wrap:wrap; }
+  .toc li{ margin-bottom:6px; }
+}
+
+@media (max-width: 640px){
+  .policies-hero{ padding:30px 0 10px; }
+  .policy-card{ padding:20px; }
+  .policy-card h2{ font-size:1.2rem; }
+  .policy-card li{ font-size:0.85rem; }
+  .toc{ padding:12px; }
+  .toc a{ font-size:0.8rem; }
+}
 </style>
 </body>
 </html>

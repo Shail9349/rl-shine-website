@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RL Shine — Shop Page Script
+   RL Shine — Shop Page Script (Updated with variant support)
    ========================================================================== */
 
 (function(){
@@ -44,8 +44,12 @@
   function renderProducts(){
     const grid = document.getElementById('productGrid');
     if(!grid) return;
+    
+    const qty = {};
+    PRODUCTS.forEach(p => qty[p.id] = 1);
+
     grid.innerHTML = PRODUCTS.map((p, i) => `
-      <div class="glass product-card reveal reveal-delay-${i}">
+      <div class="glass product-card reveal reveal-delay-${i % 3}">
         <span class="badge ${p.badgeClass}">${p.badge}</span>
         <img src="${p.image}" data-fallback="images/product-hero.png" alt="${p.name}" loading="lazy">
         <span class="variant-tag">${p.variant}</span>
@@ -66,9 +70,6 @@
       </div>
     `).join('');
 
-    const qty = {};
-    PRODUCTS.forEach(p => qty[p.id] = 1);
-
     grid.querySelectorAll('[data-qty-plus]').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.qtyPlus;
@@ -83,17 +84,35 @@
         grid.querySelector(`[data-qty-val="${id}"]`).textContent = qty[id];
       });
     });
+
     grid.querySelectorAll('[data-add]').forEach(btn => {
       btn.addEventListener('click', () => {
         const p = PRODUCTS.find(x => x.id === btn.dataset.add);
-        RLShine.addToCart({ id: p.id, name: p.name, price: p.price, mrp: p.mrp, variant: p.variant, image: p.image, qty: qty[p.id] });
+        RLShine.addToCart({ 
+          id: p.id, 
+          name: p.name, 
+          price: p.price, 
+          mrp: p.mrp, 
+          variant: p.variant, 
+          image: p.image, 
+          qty: qty[p.id] 
+        });
         RLShine.showToast(`${p.name} added to cart 🛒`);
       });
     });
+
     grid.querySelectorAll('[data-buy]').forEach(btn => {
       btn.addEventListener('click', () => {
         const p = PRODUCTS.find(x => x.id === btn.dataset.buy);
-        RLShine.addToCart({ id: p.id, name: p.name, price: p.price, mrp: p.mrp, variant: p.variant, image: p.image, qty: qty[p.id] });
+        RLShine.addToCart({ 
+          id: p.id, 
+          name: p.name, 
+          price: p.price, 
+          mrp: p.mrp, 
+          variant: p.variant, 
+          image: p.image, 
+          qty: qty[p.id] 
+        });
         window.location.href = 'checkout.html';
       });
     });
@@ -104,7 +123,7 @@
     const grid = document.getElementById('subGrid');
     if(!grid) return;
     grid.innerHTML = SUBSCRIPTIONS.map((s, i) => `
-      <div class="glass sub-card reveal reveal-delay-${i}" data-sub="${s.id}">
+      <div class="glass sub-card reveal reveal-delay-${i % 3}" data-sub="${s.id}">
         ${s.popular ? '<span class="plan-badge badge-popular">Most Popular</span>' : ''}
         <h3>${s.name}</h3>
         <div class="sub-price">₹${s.price}<span style="font-size:.9rem;color:var(--ink-soft);font-weight:500;">${s.period}</span></div>
@@ -118,7 +137,15 @@
         const s = SUBSCRIPTIONS.find(x => x.id === btn.dataset.selectSub);
         grid.querySelectorAll('.sub-card').forEach(c => c.classList.remove('selected'));
         btn.closest('.sub-card').classList.add('selected');
-        RLShine.addToCart({ id: s.id, name: `RL Shine Subscription — ${s.name}`, price: s.price, mrp: s.price, variant: s.period, image: 'images/single.png', qty: 1 });
+        RLShine.addToCart({ 
+          id: s.id, 
+          name: `RL Shine Subscription — ${s.name}`, 
+          price: s.price, 
+          mrp: s.price, 
+          variant: s.period, 
+          image: 'images/single.png', 
+          qty: 1 
+        });
         RLShine.showToast(`${s.name} subscription added 🎉`);
       });
     });
@@ -173,7 +200,6 @@
     renderSubscriptions();
     initTabs();
     initRegForms();
-    // re-run scroll reveal for dynamically injected content
     setTimeout(() => {
       const items = document.querySelectorAll('.reveal:not(.in)');
       const io = new IntersectionObserver((entries) => {

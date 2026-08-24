@@ -183,7 +183,7 @@
 
         if(placeOrderBtn){
           if(this.value === 'COD'){
-            placeOrderBtn.textContent = 'Place Order (COD)';
+            placeOrderBtn.textContent = 'Place Order';
           } else if(this.value === 'UPI'){
             placeOrderBtn.textContent = 'Pay with UPI & Order';
           } else if(this.value === 'WhatsApp'){
@@ -198,7 +198,7 @@
     if(whatsappPanel) whatsappPanel.classList.remove('show');
     const defaultRadio = document.querySelector('input[name="payMethod"][value="COD"]');
     if(defaultRadio) defaultRadio.checked = true;
-    if(placeOrderBtn) placeOrderBtn.textContent = 'Place Order (COD)';
+    if(placeOrderBtn) placeOrderBtn.textContent = 'Place Order';
   }
 
   /* ---------- Form Validation ---------- */
@@ -813,7 +813,7 @@
 
         if(placeOrderBtn){
           if(this.value === 'COD'){
-            placeOrderBtn.textContent = 'Place Order (COD)';
+            placeOrderBtn.textContent = 'Place Order';
           } else if(this.value === 'UPI'){
             placeOrderBtn.textContent = 'Pay with UPI & Order';
           } else if(this.value === 'WhatsApp'){
@@ -827,7 +827,7 @@
     if(whatsappPanel) whatsappPanel.classList.remove('show');
     const defaultRadio = document.querySelector('input[name="payMethod"][value="COD"]');
     if(defaultRadio) defaultRadio.checked = true;
-    if(placeOrderBtn) placeOrderBtn.textContent = 'Place Order (COD)';
+    if(placeOrderBtn) placeOrderBtn.textContent = 'Place Order';
   }
 
   /* ---------- Form Validation ---------- */
